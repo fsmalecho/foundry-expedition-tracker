@@ -1,0 +1,75 @@
+<form class="expedition-timed-effect-templates-form">
+  <p class="hint">{{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.FormHint' }}</p>
+
+  <table class="expedition-timed-effect-template-table">
+    <thead>
+      <tr>
+        <th>{{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.TemplateName' }}</th>
+        <th>{{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.TemplateIconPath' }}</th>
+        <th>{{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.TemplateConfig' }}</th>
+        <th>{{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.TemplateActions' }}</th>
+      </tr>
+    </thead>
+    <tbody data-template-rows>
+      {{#each templates as |template index|}}
+      <tr data-template-row>
+        <td>
+          <input type="hidden" name="templates.{{index}}.id" value="{{template.id}}">
+          <input type="text" name="templates.{{index}}.name" value="{{template.name}}" data-template-field="name">
+        </td>
+        <td>
+          <div class="expedition-timed-effect-icon-path-field">
+            <input type="text" name="templates.{{index}}.iconPath" value="{{template.iconPath}}" data-template-field="iconPath">
+            <button type="button" data-action="browse-icon-path">
+              {{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.BrowseIconPath' }}
+            </button>
+          </div>
+        </td>
+        <td>
+          <div class="expedition-timed-effect-template-config-stack">
+            <label class="expedition-timed-effect-inline-field">
+              <span>{{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.TemplateDefaultDuration' }}</span>
+              <input type="number" name="templates.{{index}}.defaultDurationTurns" value="{{template.defaultDurationTurns}}" min="1" step="1" data-template-field="defaultDurationTurns">
+            </label>
+            <label class="expedition-timed-effect-inline-checkbox">
+              <input type="checkbox" name="templates.{{index}}.isLightSource" data-light-source-toggle {{#if template.isLightSource}}checked{{/if}}>
+              <span>{{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.LightSourceLabel' }}</span>
+            </label>
+            <div class="expedition-timed-effect-light-fields" data-light-source-fields {{#unless template.isLightSource}}hidden{{/unless}}>
+              <label class="expedition-timed-effect-inline-field">
+                <span>{{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.BrightLightLabel' }}</span>
+                <input type="number" name="templates.{{index}}.brightLight" value="{{template.brightLight}}" min="0" step="1" data-template-field="brightLight" {{#unless template.isLightSource}}disabled{{/unless}}>
+              </label>
+              <label class="expedition-timed-effect-inline-field">
+                <span>{{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.DimLightLabel' }}</span>
+                <input type="number" name="templates.{{index}}.dimLight" value="{{template.dimLight}}" min="0" step="1" data-template-field="dimLight" {{#unless template.isLightSource}}disabled{{/unless}}>
+              </label>
+              <label class="expedition-timed-effect-inline-field">
+                <span>{{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.EmissionAngleLabel' }}</span>
+                <input type="number" name="templates.{{index}}.emissionAngle" value="{{template.emissionAngle}}" min="1" max="360" step="1" data-template-field="emissionAngle" {{#unless template.isLightSource}}disabled{{/unless}}>
+              </label>
+            </div>
+          </div>
+        </td>
+        <td class="template-actions-cell">
+          <button type="button" data-action="remove-template">
+            {{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.RemoveTemplate' }}
+          </button>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <div class="expedition-timed-effect-template-actions">
+    <button type="button" data-action="add-template">
+      {{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.AddTemplate' }}
+    </button>
+  </div>
+
+  <footer class="sheet-footer flexrow">
+    <button type="submit">
+      {{ localize 'EXPEDITION_TRACKER.TimedEffects.Settings.SaveTemplates' }}
+    </button>
+  </footer>
+</form>

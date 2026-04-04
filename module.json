@@ -1,0 +1,29 @@
+{
+  "id": "expedition-tracker",
+  "title": "Expedition Tracker",
+  "description": "A system-agnostic GM expedition tracker for turn, watch, and journal-based exploration procedures.",
+  "version": "2026.04.04",
+  "compatibility": {
+    "minimum": 12,
+    "verified": "13.351"
+  },
+  "authors": [
+    {
+      "name": "Dan Tesch"
+    }
+  ],
+  "esmodules": [
+    "module/expedition-tracker.mjs"
+  ],
+  "styles": [
+    "styles/expedition-tracker.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "relationships": {}
+}

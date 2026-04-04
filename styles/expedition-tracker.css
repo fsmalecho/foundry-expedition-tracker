@@ -1,0 +1,660 @@
+#expedition-tracker-overlay.expedition-tracker-overlay {
+  position: fixed;
+  max-width: calc(100vw - 24px);
+  z-index: 70;
+  pointer-events: auto;
+}
+
+.expedition-tracker-hud,
+.expedition-tracker-hud *,
+.application.dialog.expedition-tracker-ui,
+.application.dialog.expedition-tracker-ui * {
+  font-family: Signika, sans-serif !important;
+}
+
+.expedition-tracker-hud {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.2rem 0.24rem;
+  border: 1px solid rgba(201, 199, 184, 0.24);
+  border-radius: 8px;
+  background: rgba(10, 12, 18, 0.8);
+  color: rgba(245, 240, 230, 0.94);
+}
+
+.expedition-timed-effects-track {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.expedition-timed-effects-track-actions {
+  flex: 0 0 auto;
+}
+
+.expedition-timed-effects-slots {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.35rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.expedition-timed-effects-slot {
+  min-height: 2.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  padding: 0.2rem;
+  border: 1px solid rgba(201, 199, 184, 0.18);
+  border-radius: 6px;
+  background: rgba(255, 248, 220, 0.04);
+  overflow: hidden;
+}
+
+.expedition-timed-effect-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  padding: 0;
+  border: 1px solid rgba(201, 199, 184, 0.4);
+  border-radius: 5px;
+  background: rgba(10, 12, 18, 0.95);
+}
+
+.expedition-timed-effect-icon:hover {
+  background: rgba(38, 43, 56, 0.98);
+}
+
+.expedition-timed-effect-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.expedition-timed-effect-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0.1rem;
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(112, 82, 42, 0.92), rgba(66, 48, 24, 0.96));
+  color: rgba(245, 240, 230, 0.96);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.expedition-timed-effect-icon-paused {
+  opacity: 0.78;
+  border-color: rgba(212, 175, 55, 0.78);
+}
+
+.expedition-timed-effect-icon-paused::after {
+  content: "II";
+  position: absolute;
+  top: -0.15rem;
+  left: -0.15rem;
+  padding: 0.02rem 0.14rem;
+  border-radius: 999px;
+  background: rgba(112, 82, 42, 0.96);
+  color: rgba(245, 240, 230, 0.95);
+  font-size: 0.55rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.expedition-timed-effect-icon-light-source {
+  box-shadow: 0 0 0 1px rgba(214, 171, 92, 0.18);
+}
+
+.expedition-timed-effect-badge,
+.expedition-timed-effect-slot-overflow {
+  font-size: 0.68rem;
+  line-height: 1;
+  color: rgba(245, 240, 230, 0.92);
+}
+
+.expedition-timed-effect-badge {
+  position: absolute;
+  right: -0.2rem;
+  bottom: -0.2rem;
+  padding: 0.08rem 0.18rem;
+  border-radius: 999px;
+  background: rgba(112, 82, 42, 0.96);
+}
+
+.expedition-timed-effect-slot-overflow {
+  font-weight: 700;
+}
+
+.expedition-tracker-hud .referee-pane-title {
+  font-weight: 700;
+  color: rgba(245, 240, 230, 0.96);
+  line-height: 1.1;
+}
+
+.expedition-tracker-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.expedition-tracker-drag-handle {
+  cursor: move;
+}
+
+.expedition-tracker-dragging {
+  user-select: none;
+}
+
+.expedition-tracker-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+.expedition-tracker-header-summary {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-left: 0.4rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.expedition-tracker-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.referee-tracker-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(245, 240, 230, 0.8);
+}
+
+.referee-turn-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.referee-hud-button {
+  width: auto;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid rgba(201, 199, 184, 0.45);
+  border-radius: 6px;
+  background: rgba(10, 12, 18, 0.95);
+  color: rgba(245, 240, 230, 0.94);
+  white-space: nowrap;
+}
+
+.referee-hud-button:hover:not(:disabled),
+.referee-log-toggle:hover {
+  background: rgba(38, 43, 56, 0.98);
+}
+
+.referee-hud-button:disabled {
+  opacity: 0.55;
+}
+
+.referee-hud-button-secondary {
+  flex: 0 0 auto;
+}
+
+.referee-tracker-check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.referee-tracker-state {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.referee-tracker-state-line {
+  min-width: 0;
+}
+
+.referee-tracker-state-line-summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.referee-tracker-state-line-summary .referee-tracker-state-label:last-child {
+  text-align: right;
+}
+
+.referee-tracker-state-label,
+.referee-log-entry {
+  font-size: 0.9rem;
+}
+
+.referee-log-toggle {
+  flex: 0 0 auto;
+  min-width: 1.9rem;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid rgba(201, 199, 184, 0.45);
+  border-radius: 6px;
+  background: rgba(10, 12, 18, 0.95);
+  color: rgba(245, 240, 230, 0.94);
+  line-height: 1;
+}
+
+.expedition-tracker-log {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-top: 0.1rem;
+  border-top: 1px solid rgba(201, 199, 184, 0.18);
+}
+
+.referee-log-list {
+  max-height: 4.8rem;
+  overflow-y: auto;
+  padding-right: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.referee-log-entry {
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(201, 199, 184, 0.12);
+  color: rgba(245, 240, 230, 0.84);
+}
+
+.referee-log-entry:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.referee-log-entry-empty {
+  color: rgba(245, 240, 230, 0.62);
+}
+
+.expedition-timed-effect-tooltip {
+  position: fixed;
+  z-index: 10000;
+  min-width: 12rem;
+  max-width: 18rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(201, 199, 184, 0.42);
+  border-radius: 8px;
+  background: rgba(12, 10, 18, 0.98);
+  color: rgba(245, 240, 230, 0.94);
+  box-shadow: 0 0.55rem 1.4rem rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+}
+
+.expedition-timed-effect-tooltip-title {
+  font-weight: 700;
+  color: rgba(245, 240, 230, 0.98);
+  margin-bottom: 0.2rem;
+}
+
+.expedition-timed-effect-tooltip-row {
+  font-size: 0.82rem;
+  color: rgba(245, 240, 230, 0.84);
+}
+
+.expedition-timed-effect-tooltip-row + .expedition-timed-effect-tooltip-row {
+  margin-top: 0.12rem;
+}
+
+.expedition-timed-effect-tooltip-row-status {
+  color: rgba(233, 199, 112, 0.95);
+  font-weight: 700;
+}
+
+.application.dialog.expedition-tracker-ui .window-content,
+.application.dialog.expedition-tracker-ui {
+  background: rgba(12, 10, 18, 0.96);
+  color: rgba(245, 240, 230, 0.92);
+}
+
+.expedition-tracker-dialog-form {
+  padding: 0.5rem;
+}
+
+.expedition-tracker-dialog-form .form-group {
+  margin-bottom: 0.75rem;
+}
+
+.expedition-tracker-dialog-form .form-group > label,
+.expedition-tracker-dialog-form fieldset > label,
+.expedition-tracker-dialog-form legend {
+  color: rgba(245, 240, 230, 0.92);
+  font-weight: 700;
+}
+
+.expedition-tracker-dialog-form input:not([type='checkbox']),
+.expedition-tracker-dialog-form select,
+.application.dialog.expedition-tracker-ui textarea {
+  min-height: 2.2rem;
+  background: rgba(58, 49, 61, 0.96);
+  border: 1px solid rgba(201, 199, 184, 0.65);
+  color: rgba(245, 230, 200, 0.95);
+}
+
+.expedition-tracker-dialog-form input[type='checkbox'] {
+  min-height: 0;
+  width: auto;
+  margin-right: 0.45rem;
+}
+
+.expedition-tracker-dialog-form .hint {
+  margin-top: 0.35rem;
+  color: rgba(245, 240, 230, 0.72);
+}
+
+.expedition-tracker-dialog-form fieldset {
+  margin: 0;
+  padding: 0.85rem 1rem 1rem;
+  border: 1px solid rgba(201, 199, 184, 0.55);
+  border-radius: 0.75rem;
+}
+
+.expedition-tracker-dialog-form .form-fields {
+  align-items: center;
+}
+
+.expedition-tracker-dialog-form fieldset > .form-fields:first-of-type {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.75rem 1rem;
+  align-items: center;
+}
+
+.expedition-tracker-dialog-form fieldset > .form-fields:first-of-type > .form-fields {
+  display: grid;
+  grid-template-columns: 5rem auto 5rem;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.expedition-tracker-dialog-form fieldset > .form-fields:first-of-type > .form-fields input {
+  width: 5rem;
+  text-align: center;
+}
+
+.expedition-tracker-dialog-form input[name='wanderingEncounterThreshold'],
+.expedition-tracker-dialog-form input[name='wanderingDieFaces'] {
+  text-align: left;
+}
+
+.expedition-tracker-dialog-form fieldset > .form-fields:first-of-type > .form-fields span {
+  font-weight: 700;
+  color: rgba(245, 240, 230, 0.92);
+  text-align: center;
+}
+
+.expedition-tracker-dialog-form fieldset > .form-fields + .form-fields {
+  display: grid;
+  grid-template-columns: auto minmax(5rem, 7rem);
+  gap: 1rem;
+  justify-content: start;
+}
+
+.expedition-tracker-dialog-form fieldset > .form-fields + .form-fields input {
+  width: 7rem;
+  text-align: center;
+}
+
+.expedition-tracker-dialog-form fieldset .form-group:last-of-type {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+.expedition-tracker-dialog-form .expedition-timekeeping-fieldset > .form-fields:first-of-type {
+  display: grid;
+  grid-template-columns: auto minmax(14rem, 18rem);
+  gap: 1rem;
+  justify-content: start;
+}
+
+.expedition-tracker-dialog-form .expedition-wandering-fieldset > .form-fields > label {
+  justify-self: start;
+  text-align: left;
+}
+
+.expedition-tracker-dialog-form .expedition-wandering-fieldset > .form-fields {
+  justify-content: start;
+}
+
+.expedition-tracker-dialog-form .expedition-wandering-fieldset > .form-fields:first-of-type {
+  justify-content: start;
+}
+
+.expedition-tracker-dialog-form .expedition-timekeeping-fieldset > .form-fields:first-of-type select {
+  width: 100%;
+}
+
+.expedition-tracker-dialog-form .expedition-timekeeping-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(201, 199, 184, 0.22);
+  border-radius: 0.65rem;
+  background: rgba(255, 248, 220, 0.04);
+}
+
+.expedition-tracker-dialog-form .expedition-timekeeping-summary-line {
+  color: rgba(245, 240, 230, 0.84);
+}
+
+.expedition-tracker-dialog-form .expedition-timekeeping-custom-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.expedition-tracker-dialog-form .expedition-timekeeping-custom-fields[hidden] {
+  display: none;
+}
+
+.expedition-tracker-dialog-form .expedition-timekeeping-custom-fields > .form-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(10rem, 15rem);
+  gap: 1rem;
+  justify-content: start;
+}
+
+.expedition-tracker-dialog-form .expedition-timekeeping-custom-fields > .form-fields input {
+  width: 100%;
+}
+
+.expedition-timed-effect-template-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.application.expedition-timed-effect-template-config .window-content {
+  color: inherit;
+}
+
+.expedition-timed-effect-templates-form {
+  padding: 0.5rem;
+}
+
+.expedition-timed-effect-templates-form .hint,
+.expedition-timed-effect-template-table th,
+.expedition-timed-effect-template-table td {
+  color: inherit;
+}
+
+.expedition-timed-effect-template-table th,
+.expedition-timed-effect-template-table td {
+  padding: 0.35rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border-light-tertiary, rgba(0, 0, 0, 0.15));
+}
+
+.expedition-timed-effect-template-table th {
+  text-align: left;
+}
+
+.expedition-timed-effect-template-table input,
+.expedition-timed-effect-template-table button,
+.expedition-timed-effect-templates-form .sheet-footer button {
+  width: 100%;
+}
+
+.expedition-timed-effect-icon-path-field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.expedition-timed-effect-icon-path-field button {
+  width: auto;
+  white-space: nowrap;
+}
+
+.expedition-timed-effect-custom-fields[hidden] {
+  display: none;
+}
+
+.expedition-timed-effect-manage-form input[readonly] {
+  opacity: 0.8;
+}
+
+.expedition-timed-effect-dialog-form .expedition-timed-effect-light-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.expedition-timed-effect-dialog-form .expedition-timed-effect-light-fields[hidden] {
+  display: none;
+}
+
+.expedition-timed-effect-dialog-form [data-timed-effect-source-token-field][hidden],
+.expedition-timed-effect-dialog-form [data-timed-effect-source-label-field][hidden],
+.expedition-timed-effect-dialog-form [data-timed-effect-freeform-source-field][hidden] {
+  display: none;
+}
+
+.expedition-timed-effect-template-actions {
+  margin-top: 0.75rem;
+}
+
+.template-actions-cell {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.expedition-timed-effect-template-config-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.expedition-timed-effect-inline-field,
+.expedition-timed-effect-inline-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.expedition-timed-effect-inline-field {
+  justify-content: space-between;
+}
+
+.expedition-timed-effect-inline-field span,
+.expedition-timed-effect-inline-checkbox span {
+  font-size: 0.95rem;
+  color: inherit;
+}
+
+.expedition-timed-effect-inline-field input[type='number'] {
+  width: 7rem;
+}
+
+.expedition-timed-effect-light-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.expedition-timed-effect-light-fields[hidden] {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  #expedition-tracker-overlay.expedition-tracker-overlay {
+    width: calc(100vw - 16px) !important;
+    left: 8px !important;
+    right: 8px;
+    transform: none;
+  }
+
+  .referee-tracker-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .expedition-tracker-header,
+  .expedition-timed-effects-track,
+  .expedition-tracker-header-actions,
+  .referee-turn-actions,
+  .referee-tracker-check-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .expedition-tracker-header-summary {
+    margin-left: 0;
+    gap: 0.35rem;
+  }
+
+  .expedition-timed-effects-slots {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .referee-tracker-state-line-summary {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .referee-tracker-state-line-summary .referee-tracker-state-label:last-child {
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .expedition-tracker-dialog-form .expedition-timekeeping-fieldset > .form-fields:first-of-type,
+  .expedition-tracker-dialog-form .expedition-timekeeping-custom-fields > .form-fields,
+  .expedition-timed-effect-dialog-form .expedition-timed-effect-light-fields,
+  .expedition-timed-effect-light-fields {
+    grid-template-columns: 1fr;
+  }
+}

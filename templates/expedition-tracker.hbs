@@ -1,0 +1,113 @@
+<section class="expedition-tracker-hud{{#unless tracker.isActive}} expedition-tracker-hud-inactive{{/unless}}{{#if logCollapsed}} expedition-tracker-log-collapsed{{/if}}">
+  {{#if tracker.showTimedEffects}}
+  <div class="expedition-timed-effects-track">
+    <div class="expedition-timed-effects-track-actions">
+      <button type="button" class="referee-hud-button timed-effects-add-action">
+        {{ localize 'EXPEDITION_TRACKER.TimedEffects.AddAction' }}
+      </button>
+    </div>
+    <div class="expedition-timed-effects-slots">
+      {{#each tracker.timedEffectSlots as |slot|}}
+      <div class="expedition-timed-effects-slot">
+        {{#each slot.effects as |effect|}}
+        <button
+          type="button"
+          class="expedition-timed-effect-icon{{#if effect.isPaused}} expedition-timed-effect-icon-paused{{/if}}{{#if effect.isLightSource}} expedition-timed-effect-icon-light-source{{/if}}"
+          data-timed-effect-manage="{{effect.id}}">
+          {{#if effect.iconPath}}
+          <img src="{{effect.iconPath}}" alt="{{effect.name}}">
+          {{else}}
+          <span class="expedition-timed-effect-fallback">{{effect.fallbackLabel}}</span>
+          {{/if}}
+          {{#if effect.overflowLabel}}
+          <span class="expedition-timed-effect-badge">{{effect.overflowLabel}}</span>
+          {{/if}}
+        </button>
+        {{/each}}
+        {{#if slot.overflowCount}}
+        <span class="expedition-timed-effect-slot-overflow">+{{slot.overflowCount}}</span>
+        {{/if}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+
+  <div class="expedition-tracker-header">
+    <div class="referee-pane-title">{{ localize 'EXPEDITION_TRACKER.Title' }}</div>
+    {{#if tracker.isActive}}
+    <div class="referee-tracker-summary expedition-tracker-header-summary">
+      <span>{{tracker.incrementCountLabel}}</span>
+      <span>{{tracker.cycleCountLabel}}</span>
+      <span>{{tracker.incrementInCycleLabel}}</span>
+    </div>
+    <div class="expedition-tracker-header-actions">
+      <button type="button" class="referee-hud-button referee-hud-button-secondary end-expedition-action">
+        {{ localize 'EXPEDITION_TRACKER.Expedition.EndAction' }}
+      </button>
+    </div>
+    {{else}}
+    <div class="expedition-tracker-header-actions">
+      <button type="button" class="referee-hud-button referee-hud-button-secondary reset-expedition-action">
+        {{ localize 'EXPEDITION_TRACKER.Expedition.StartAction' }}
+      </button>
+    </div>
+    {{/if}}
+  </div>
+
+  {{#if tracker.isActive}}
+  <div class="expedition-tracker-body">
+    <div class="referee-turn-actions">
+      <button type="button" class="referee-hud-button" data-turn-action="advance">
+        {{ localize 'EXPEDITION_TRACKER.Actions.AdvanceTurn' }}
+      </button>
+      <button type="button" class="referee-hud-button" data-turn-action="rest">
+        {{ localize 'EXPEDITION_TRACKER.Actions.RestTurn' }}
+      </button>
+      <button type="button" class="referee-hud-button" data-turn-action="search">
+        {{ localize 'EXPEDITION_TRACKER.Actions.SearchTurn' }}
+      </button>
+      <button type="button" class="referee-hud-button" data-turn-action="listen">
+        {{ localize 'EXPEDITION_TRACKER.Actions.ListenTurn' }}
+      </button>
+      <button type="button" class="referee-hud-button other-turn-action">
+        {{ localize 'EXPEDITION_TRACKER.OtherTurn.Action' }}
+      </button>
+      <button type="button" class="referee-hud-button note-current-turn-action">
+        {{ localize 'EXPEDITION_TRACKER.Notes.Action' }}
+      </button>
+      <button type="button" class="referee-hud-button wandering-check-action">
+        {{ localize 'EXPEDITION_TRACKER.Wandering.Check' }}
+      </button>
+    </div>
+    <div class="referee-tracker-check-row">
+      <div class="referee-tracker-state">
+        <div class="referee-tracker-state-line referee-tracker-state-line-summary">
+          <span class="referee-tracker-state-label">{{ localize 'EXPEDITION_TRACKER.Wandering.RuleLabel' value=tracker.wanderingCheckRuleLabel }}</span>
+          <span class="referee-tracker-state-label">{{ localize 'EXPEDITION_TRACKER.Wandering.AutoLabel' value=tracker.wanderingCheckAutoLabel }}</span>
+        </div>
+        <div class="referee-tracker-state-line">
+          <span class="referee-tracker-state-label">{{ localize 'EXPEDITION_TRACKER.Wandering.LastLabel' value=tracker.lastWanderingCheckLabel }}</span>
+        </div>
+      </div>
+      <button type="button" class="referee-log-toggle" aria-label="{{ localize 'EXPEDITION_TRACKER.Log.Toggle' }}">
+        {{#if logCollapsed}}&#8595;{{else}}&#8593;{{/if}}
+      </button>
+    </div>
+  </div>
+
+  {{#unless logCollapsed}}
+  <section class="expedition-tracker-log">
+    <div class="referee-log-list">
+      {{#each tracker.logEntries as |entry|}}
+      <div class="referee-log-entry referee-log-entry-{{entry.type}}">{{entry.text}}</div>
+      {{else}}
+      <div class="referee-log-entry referee-log-entry-empty">
+        {{ localize 'EXPEDITION_TRACKER.Log.Empty' }}
+      </div>
+      {{/each}}
+    </div>
+  </section>
+  {{/unless}}
+  {{/if}}
+</section>
