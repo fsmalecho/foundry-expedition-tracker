@@ -25,5 +25,9 @@
       "path": "lang/en.json"
     }
   ],
-  "relationships": {}
+  "relationships": {},
+  "esmodules": [],
+  "url": "https://github.com/DT357/foundry-expedition-tracker",
+  "manifest": "https://github.com/DT357/foundry-expedition-tracker/releases/download/v2026.04.04/module.json",
+  "download": "https://github.com/DT357/foundry-expedition-tracker/releases/download/v2026.04.04/expedition-tracker.zip"
 }
