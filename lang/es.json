@@ -1,0 +1,212 @@
+{
+  "EXPEDITION_TRACKER": {
+    "Title": "Control de expediciones",
+    "NoTurnsRecorded": "Aún no se ha registrado ninguna expedición.",
+    "NoWanderingCheckRecorded": "Aún no se ha registrado ninguna prueba de monstruos errantes.",
+    "Actions": {
+      "AdvanceTurn": "Avanzar turno",
+      "RestTurn": "Descansar",
+      "SearchTurn": "Buscar",
+      "ListenTurn": "Escuchar"
+    },
+    "TurnTypes": {
+      "Advance": "Avanzar turno",
+      "Rest": "Turno de descanso",
+      "Search": "Turno de búsqueda",
+      "Listen": "Escuchando",
+      "Other": "Otro"
+    },
+    "Common": {
+      "Cancel": "Cancelar"
+    },
+    "Expedition": {
+      "NameLabel": "Nombre de la expedición",
+      "NamePlaceholder": "Las minas perdidas",
+      "StartAction": "Nueva expedición",
+      "EndAction": "Terminar expedición",
+      "StartDialogTitle": "Iniciar una nueva expedición",
+      "StartConfirmTitle": "Iniciar nueva expedición",
+      "StartConfirmBody": "¿Iniciar una nueva expedición y borrar el recuento de turnos actual y el registro de la expedición?",
+      "StartConfirmYes": "Iniciar una nueva expedición",
+      "EndConfirmTitle": "Terminar expedición",
+      "EndConfirmBody": "¿Quieres finalizar la expedición actual y ocultar el Control?",
+      "EndConfirmYes": "Terminar expedición"
+    },
+    "Log": {
+      "Toggle": "Mostrar/ocultar el diario de la expedición",
+      "Empty": "Aún no hay entradas en el diario de expedición."
+    },
+    "Notes": {
+      "Action": "Añadir nota",
+      "Title": "Nota turno actual",
+      "Label": "Notas del turno",
+      "Placeholder": "Añade detalles sobre el turno actual...",
+      "Empty": "Escribe una nota antes de continuar.",
+      "Unavailable": "Registra al menos un turno antes de añadir una nota."
+    },
+    "OtherTurn": {
+      "Action": "Otro",
+      "Title": "Otro turno de expedición",
+      "PromptLabel": "Actividad del turno",
+      "Placeholder": "Mapear, forzar la puerta, examinar el ídolo...",
+      "Empty": "Introduce una actividad de turno antes de continuar."
+    },
+    "TimedEffects": {
+      "AddAction": "Añadir efecto",
+      "RemoveAction": "Eliminar efecto",
+      "NoTemplatesConfigured": "No hay ninguna plantilla de efectos temporales configurada. Añade primero una en la configuración del módulo.",
+      "RemainingTooltip": "{remaining} turnos restantes (de {total})",
+      "SourceTooltip": "Fuente: {source}",
+      "LightTooltip": "Luz: brillo {bright}, atenuación {dim}, ángulo {angle}",
+      "PausedStatus": "En pausa",
+      "UnknownSource": "Fuente desconocida",
+      "Activated": "{name} activado.",
+      "ActivatedWithSource": "{source} activó {name}",
+      "Paused": "{name} en pausa.",
+      "PausedWithSource": "{name} de {source} en pausa.",
+      "Resumed": "{name} reanudado.",
+      "ResumedWithSource": "{name} de {source} reanudado.",
+      "Expired": "{name} caducado.",
+      "ExpiredWithSource": "{name} de {source} ha caducado.",
+      "ExtinguishedMessage": "¡El/la {name} de {tokenName} se ha apagado!",
+      "TemplateValidation": "Cada plantilla de efecto temporal requiere tanto un nombre como una ruta de acceso al icono.",
+      "AddDialog": {
+        "Title": "Añadir efecto temporal",
+        "TemplateLabel": "Plantilla",
+        "CustomTemplateOption": "Efecto personalizado",
+        "CustomNameLabel": "Nombre del efecto personalizado",
+        "CustomIconLabel": "Ruta de iconos personalizada",
+        "BrowseIconAction": "Explorar",
+        "CustomRequired": "Introduce un nombre personalizado para el efecto.",
+        "DurationLabel": "Duración (turnos)",
+        "SourceLabel": "Fuente (opcional)",
+        "SourcePlaceholder": "Elige un actor de una escena o escribe una fuente personalizada...",
+        "LightSourceLabel": "Fuente de luz",
+        "SourceTokenLabel": "Ficha de la escena",
+        "SourceTokenPlaceholder": "Selecciona una ficha en la escena actual",
+        "SourceLabelOverride": "Etiqueta de visualización (opcional)",
+        "SourceLabelOverridePlaceholder": "Déjalo en blanco para utilizar el nombre de la ficha",
+        "BrightLightLabel": "Brillo",
+          "DimLightLabel": "Atenuación",
+          "EmissionAngleLabel": "Ángulo de emisión",
+          "SourceTokenRequired": "Selecciona una ficha de la escena actual para aplicar efectos de fuente de luz."
+        },
+        "ManageDialog": {
+          "Title": "Gestionar {name}",
+          "NameLabel": "Nombre",
+          "RemainingTurns": "Turnos restantes",
+          "TotalTurns": "Total de turnos",
+          "SourceLabel": "Fuente",
+          "SourcePlaceholder": "Fuente opcional",
+          "TokenLabel": "Ficha de escena",
+          "UnknownToken": "Ficha desconocida",
+          "DisplayLabel": "Etiqueta de visualización",
+          "DisplayLabelPlaceholder": "Déjalo en blanco para utilizar el nombre de la ficha",
+          "SaveAction": "Guardar",
+          "PauseAction": "Pausar",
+          "ResumeAction": "Reanudar",
+          "CustomNameRequired": "Introduce un nombre personalizado para el efecto."
+        },
+        "RemoveDialog": {
+          "Title": "Eliminar efecto temporal",
+          "Body": "¿Eliminar {name} de la lista de efectos temporales?",
+        "LightSourceBody": "¿Eliminar {name} de la lista de efectos temporales? ¿Debería recalcularse también la luz de la ficha vinculada?",
+        "RemoveOnlyAction": "Eliminar solo el efecto",
+        "RemoveAndRecalculateAction": "Eliminar efecto y recalcular la iluminación"
+      },
+      "Settings": {
+        "MenuLabel": "Plantillas de efectos temporales",
+        "MenuAction": "Configurar plantillas",
+        "MenuHint": "Configura las plantillas de efectos que se pueden añadir a la lista de efectos temporales.",
+        "FormHint": "Define plantillas de efectos temporales reutilizables con un nombre, una ruta de icono y una duración predeterminada opcional.",
+        "TemplateName": "Nombre",
+        "TemplateIconPath": "Ruta del icono",
+        "TemplateConfig": "Configuración de la plantilla",
+        "TemplateDefaultDuration": "Duración predeterminada",
+        "LightSourceLabel": "Fuente de luz",
+        "BrightLightLabel": "Brillo",
+        "DimLightLabel": "Atenuación",
+        "EmissionAngleLabel": "Ángulo de emisión",
+        "TemplateActions": "Acciones",
+        "AddTemplate": "Añadir plantilla",
+        "BrowseIconPath": "Explorar",
+        "RemoveTemplate": "Eliminar",
+        "SaveTemplates": "Guardar plantillas"
+      }
+    },
+    "Journal": {
+      "Name": "Diario de expedición",
+      "LogLabel": "Registro de expedición se convierte en un diario",
+      "LogHint": "Crea o utiliza el diario «Registro de expedición» y añade esta expedición como una nueva página.",
+      "NameRequired": "Introduce un nombre para la expedición para registrarla en el diario.",
+      "Unavailable": "No se puede crear ni actualizar el diario de la expedición.",
+      "Started": "Comienza la expedición",
+      "Ended": "La expedición ha concluido",
+      "HourHeading": "Hora {hour}"
+    },
+    "Time": {
+      "SettingsLegend": "Procedimiento de tiempo",
+      "ProcedureLabel": "Procedimiento de tiempo",
+      "Presets": {
+        "Dungeon": "Exploración de mazmorra",
+        "Overland": "Viaje / Exploración de hexágonos",
+        "Custom": "Personalizado"
+      },
+      "IncrementLabelSingular": "Etiqueta de turno (singular)",
+      "IncrementLabelPlural": "Etiqueta de turno (plural)",
+      "CycleLabelSingular": "Etiqueta de ciclo (singular)",
+      "CycleLabelPlural": "Etiquetas de ciclo (plural)",
+      "IncrementsPerCycle": "turnos por ciclo",
+      "IncrementCountLabel": "{label} {count}",
+      "CycleCountLabel": "{label} {count}",
+      "IncrementInCycleLabel": "{increment} en {cycle} {count}/{total}",
+      "CycleHeading": "{label} {count}",
+      "NoteEntry": "{increment}: Nota - {note}",
+      "SummaryIncrement": "Turno: {label}",
+      "SummaryCycle": "Ciclo: {label}",
+      "SummaryCadence": "{count} {increment} por {cycle}",
+      "CustomRequired": "Completar todos los campos del procedimiento de tiempo personalizado antes de continuar."
+    },
+    "Wandering": {
+      "Check": "Chequeo de encuentros",
+      "RuleLabel": "Regla de encuentros: {value}",
+      "AutoLabel": "Chequeos automáticos: {value}",
+      "LastLabel": "Último chequeo de encuentro: {value}",
+      "SettingsLegend": "Configuración de chequeos de encuentro",
+      "EncounterChanceLabel": "Probabilidad de encuentro",
+      "ChanceSeparator": "en",
+      "EveryLabel": "¿Cada cuántos turnos se comprueba?",
+      "AutoCheckLabel": "Realizar automáticamente las tiradas de encuentro",
+      "AutoCheckHint": "Si está activada, la herramienta de control realiza automáticamente los chequeos de encuentro tras cada intervalo de turno correspondiente. El botón manual sigue estando disponible.",
+      "SettingsHint": "Estos ajustes se guardan con esta expedición y los utiliza el botón chequeo de encuentro.",
+      "CadenceEveryIncrement": "comprobar cada {label}",
+      "CadenceEveryIncrements": "comprobar cada {count} {label}",
+      "RuleSummary": "{threshold}-en-{dieFaces}, {cadence}",
+      "AutoEnabled": "según ({cadence})",
+      "AutoDisabled": "apagado",
+      "Result": "1d{dieFaces} = {total} ({outcome})",
+      "Encounter": "Encuentro",
+      "NoEncounter": "Sin encuentro",
+      "FlavorWithRule": "Chequeo de monstruos errantes ({rule})",
+      "AutoFlavorWithRule": "Chequeo automático de monstruos errantes ({rule})"
+    },
+    "Settings": {
+      "Enable": {
+        "Name": "Activar el control de expediciones",
+        "Hint": "Si está activada, el director de juego puede utilizar la barra de control de expediciones situada encima de la barra de acceso rápido para llevar un registro de los turnos y anotar el diario de la expedición."
+      },
+      "TimedEffectsEnable": {
+        "Name": "Habilitar efectos temporales: Activar pista",
+        "Hint": "Si se activa, el control de expediciones muestra la barra de tiempo de los efectos y permite a los directores de juego añadir efectos temporales."
+      }
+    },
+    "TrackerPosition": {
+      "ResetMenuLabel": "Restablecer la posición del control",
+      "ResetMenuAction": "Restablecer posición",
+      "ResetMenuHint": "Restablece el HUD del control de expediciones a su posición predeterminada, encima de la barra de acceso rápido.",
+      "ResetDescription": "Restablece el HUD del control de expediciones a su posición predeterminada, encima de la barra de acceso rápido.",
+      "ResetConfirmAction": "Restablecer posición",
+      "ResetSuccess": "Se ha restablecido la posición del control de expediciones."
+    }
+  }
+}
